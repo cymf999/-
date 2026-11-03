@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a1222">
+<title>宝睿能源</title>
+
+<!--
+============================================================
+  用之前先看这里（这一段只是注释，页面上看不见）
+
+  【1】换底图
+       把你的图片放到 底图 文件夹里，然后改下面 --bg 那一行，
+       换成你的文件名就行。
+
+  【2】改底部文字和链接
+       往下找到 <!-- ▼ 底部文字 ▼ --> 那里，
+       改 href（链接地址）和链接中间的文字。
+
+  【3】调整文字颜色 / 大小 / 位置
+       改 :root 里面的 --link-color、--link-size、--bottom
+============================================================
+-->
+
+<style>
+:root{
+  /* ★ 底图文件（相对当前网页的路径） */
+  --bg: url("底图/bg.jpg");
+
+  /* ★ 底部文字 */
+  --link-color: #ffffff;      /* 文字颜色，蓝色就写 #4a9eff */
+  --link-size: 17px;          /* 文字大小 */
+  --bottom: 6vh;              /* 距离页面底部多远，数字越大越靠上 */
+
+  /* 文字背后那层阴影，保证压在图上也能看清 */
+  --text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 0 3px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+
+body{
+  min-height:100vh;
+  min-height:100dvh;
+
+  /* 底图铺满整屏 */
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color:#0a1222;
+
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* 内容靠底部对齐，只在最下面放一行文字 */
+.spacer{flex:1;}
+
+/* 底部链接 */
+.link{
+  display:inline-block;
+  margin-bottom: calc(var(--bottom) + env(safe-area-inset-bottom));
+  padding: 10px 20px;
+
+  color: var(--link-color);
+  font-size: var(--link-size);
+  font-weight: 500;
+  letter-spacing: .5px;
+  text-decoration: none;
+
+  text-shadow: var(--text-shadow);
+  transition: opacity .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.link:active{opacity:.6;}
+
+/* 电脑端：图片按比例完整显示，不放大不裁切 */
+@media (min-width: 900px){
+  body{
+    background-size: contain;
+    background-color:#05080f;
+  }
+}
+
+/* 手机上字稍小一点，避免太长换行 */
+@media (max-width: 400px){
+  :root{ --link-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+  <div class="spacer"></div>
+
+  <!-- ▼▼▼ 底部文字 ▼▼▼
+       href="..."   里面写链接地址，比如 PDF/报告.pdf 或 https://xxx.com
+       中间的文字  就是页面上显示的字
+  -->
+  <a class="link" href="PDF/报告.pdf" target="_blank" rel="noopener">
+    查看检测报告
+  </a>
+  <!-- ▲▲▲ 底部文字 ▲▲▲ -->
+
+</body>
+</html>
